@@ -24,6 +24,7 @@ public class UserServlet extends AbstractController
             UserDao userDao = UserDaoImpl.getInstance();
             List<User> users = userDao.findAll();
             req.setAttribute("users", users);
+            req.setAttribute("testes", "lalalalala");
         }
         if ("/delete".equalsIgnoreCase(req.getPathInfo())) {
             UserDao userDao = UserDaoImpl.getInstance();
@@ -42,6 +43,32 @@ public class UserServlet extends AbstractController
 
             User user = new User(null, username, password);
             userDao.save(user);
+
+            resp.sendRedirect("list");
+            return;
+        }
+        if ("/form".equalsIgnoreCase(req.getPathInfo())) {
+            if (req.getParameter("id") != "") {
+                UserDao userDao = UserDaoImpl.getInstance();
+
+                Long id = Long.parseLong(req.getParameter("id"));
+
+                if (userDao.find(id).isPresent()) {
+                    User user = userDao.find(id).get();
+
+                    req.setAttribute("user", user);
+                    req.setAttribute("edit", true);
+                }
+            }
+        }
+        if ("/set".equalsIgnoreCase(req.getPathInfo())) {
+            UserDao userDao = UserDaoImpl.getInstance();
+            Long id = Long.parseLong(req.getParameter("id"));
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
+
+            User user = new User(id, username, password);
+            userDao.update(user);
 
             resp.sendRedirect("list");
             return;

@@ -38,8 +38,8 @@
                     <td class="mdl-data-table__cell--non-numeric"><c:out value = "${user.userName}"/></td>
                     <td><c:out value = "${user.password}"/></td>
                     <td>
-                      <a href="#" class="mdl-button mdl-js-button mdl-button--icon" title="Edit"><i class="material-icons">edit</i></a>
-                      <a href="delete?id=<c:out value="${user.id}"/>" class="mdl-button mdl-js-button mdl-button--icon" title="Delete"><i class="material-icons">delete</i></a>
+                      <a href="form?id=<c:out value="${user.id}" />" class="mdl-button mdl-js-button mdl-button--icon" title="Edit"><i class="material-icons">edit</i></a>
+                      <a href="delete?id=<c:out value="${user.id}" />" class="mdl-button mdl-js-button mdl-button--icon" title="Delete"><i class="material-icons">delete</i></a>
                     </td>
                   </tr>
               </c:forEach>

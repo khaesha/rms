@@ -30,7 +30,6 @@ public class LoginServlet extends AbstractController
         UserDao userDao = UserDaoImpl.getInstance();
 
         String username = req.getParameter("username");
-        // String password = req.getParameter("password");
 
         if (userDao.findByUserName(username).isPresent()) {
             resp.sendRedirect("users/list");
