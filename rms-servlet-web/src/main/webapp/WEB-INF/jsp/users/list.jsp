@@ -23,11 +23,13 @@
 <body>
     <div class="mdl-layout mdl-js-layout mdl-color--grey-100 box-center">
     	<main class="mdl-layout__content">
+        <div style="text-align: right; margin-bottom: 5px; padding: 5px;"><a href="form" class="mdl-button mdl-js-button mdl-button--icon" title="Add"><i class="material-icons">add</i></a></div>
     		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
               <thead>
                 <tr>
                   <th class="mdl-data-table__cell--non-numeric">User Name</th>
                   <th>Password</th>
+                  <th>&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,6 +37,10 @@
                   <tr>
                     <td class="mdl-data-table__cell--non-numeric"><c:out value = "${user.userName}"/></td>
                     <td><c:out value = "${user.password}"/></td>
+                    <td>
+                      <a href="#" class="mdl-button mdl-js-button mdl-button--icon" title="Edit"><i class="material-icons">edit</i></a>
+                      <a href="delete?id=<c:out value="${user.id}"/>" class="mdl-button mdl-js-button mdl-button--icon" title="Delete"><i class="material-icons">delete</i></a>
+                    </td>
                   </tr>
               </c:forEach>
               </tbody>
